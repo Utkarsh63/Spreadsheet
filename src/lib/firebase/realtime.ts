@@ -1,0 +1,1 @@
+export { rtdb } from './config';
