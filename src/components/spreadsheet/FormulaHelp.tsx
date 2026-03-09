@@ -73,13 +73,13 @@ export function FormulaHelp({ onSelect, onClose, selectedCell, selectionRange, c
   return (
     <div
       ref={ref}
-      className="absolute left-0 top-full z-50 mt-1 w-80 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800"
+      className="absolute left-0 top-full z-50 mt-1 w-80 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg"
     >
-      <div className="border-b border-gray-100 px-3 py-2 dark:border-gray-700">
-        <p className="text-xs font-semibold text-gray-500 dark:text-gray-400">
+      <div className="border-b border-gray-100 px-3 py-2">
+        <p className="text-xs font-semibold text-gray-500">
           Formula Functions
           {hasMultiRange && (
-            <span className="ml-1 font-normal text-indigo-500 dark:text-indigo-400">· range: {rangeStr}</span>
+            <span className="ml-1 font-normal text-indigo-500">· range: {rangeStr}</span>
           )}
         </p>
       </div>
@@ -88,14 +88,14 @@ export function FormulaHelp({ onSelect, onClose, selectedCell, selectionRange, c
           <button
             key={fn.name}
             type="button"
-            className="flex w-full flex-col gap-0.5 px-3 py-2 text-left transition-colors hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="flex w-full flex-col gap-0.5 px-3 py-2 text-left transition-colors hover:bg-gray-50"
             onClick={() => { onSelect(fn.syntax); onClose(); }}
           >
             <div className="flex items-baseline gap-2">
-              <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">{fn.name}</span>
-              <span className="font-mono text-xs text-gray-500 dark:text-gray-400">{fn.syntax}</span>
+              <span className="text-xs font-bold text-indigo-600">{fn.name}</span>
+              <span className="font-mono text-xs text-gray-500">{fn.syntax}</span>
             </div>
-            <span className="text-xs text-gray-400 dark:text-gray-500">{fn.desc}</span>
+            <span className="text-xs text-gray-400">{fn.desc}</span>
           </button>
         ))}
       </div>

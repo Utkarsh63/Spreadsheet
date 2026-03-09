@@ -98,9 +98,9 @@ export function FormulaBar({ docId }: FormulaBarProps) {
   };
 
   return (
-    <div className="flex items-center border-b border-gray-200 bg-white px-3 py-1.5 dark:border-gray-700 dark:bg-gray-900">
+    <div className="flex items-center border-b border-gray-200 bg-white px-3 py-1.5">
       {/* Cell reference pill */}
-      <div className="mr-3 min-w-14 shrink-0 rounded bg-indigo-50 px-2 py-0.5 text-center font-mono text-xs font-semibold text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300">
+      <div className="mr-3 min-w-14 shrink-0 rounded bg-indigo-50 px-2 py-0.5 text-center font-mono text-xs font-semibold text-indigo-700">
         {cellLabel}
       </div>
 
@@ -109,7 +109,7 @@ export function FormulaBar({ docId }: FormulaBarProps) {
         <button
           type="button"
           onClick={() => setShowHelp((o) => !o)}
-          className="rounded px-1.5 py-0.5 font-mono text-xs font-medium text-gray-400 transition-colors hover:bg-gray-100 hover:text-indigo-600 dark:text-gray-500 dark:hover:bg-gray-800 dark:hover:text-indigo-400"
+          className="rounded px-1.5 py-0.5 font-mono text-xs font-medium text-gray-400 transition-colors hover:bg-gray-100 hover:text-indigo-600"
           title="Browse formula functions"
         >
           fx
@@ -136,8 +136,8 @@ export function FormulaBar({ docId }: FormulaBarProps) {
         disabled={!selectedCell}
         placeholder={selectedCell ? '' : 'Select a cell to edit'}
         className={cn(
-          'flex-1 bg-transparent font-mono text-sm text-gray-900 outline-none dark:text-gray-100',
-          !selectedCell && 'text-gray-400 dark:text-gray-500'
+          'flex-1 bg-transparent font-mono text-sm text-gray-900 outline-none',
+          !selectedCell && 'text-gray-400'
         )}
       />
     </div>

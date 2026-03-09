@@ -137,10 +137,10 @@ export const Cell = memo(function Cell({ cellId, docId, width, height, onShiftCl
   return (
     <div
       className={cn(
-        'relative shrink-0 cursor-cell border-b border-r border-gray-200 bg-white text-sm dark:border-gray-700 dark:bg-gray-950',
+        'relative shrink-0 cursor-cell border-b border-r border-gray-200 bg-white text-sm',
         isSelected && !isEditing && 'ring-2 ring-inset ring-indigo-500',
-        isInRange && !isSelected && 'bg-blue-50/60 dark:bg-blue-900/20',
-        !isSelected && !isInRange && 'hover:bg-blue-50/40 dark:hover:bg-blue-900/10'
+        isInRange && !isSelected && 'bg-blue-50/60',
+        !isSelected && !isInRange && 'hover:bg-blue-50/40'
       )}
       style={{
         width,
@@ -160,7 +160,7 @@ export const Cell = memo(function Cell({ cellId, docId, width, height, onShiftCl
           ref={inputRef}
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
-          className="absolute inset-0 z-20 w-full bg-white px-1.5 py-0.5 font-mono text-sm text-gray-900 outline-none ring-2 ring-inset ring-indigo-500 dark:bg-gray-950 dark:text-gray-100"
+          className="absolute inset-0 z-20 w-full bg-white px-1.5 py-0.5 font-mono text-sm text-gray-900 outline-none ring-2 ring-inset ring-indigo-500"
           style={{ textAlign: fmt?.textAlign ?? 'left' }}
           onKeyDown={handleKeyDown}
           onBlur={() => void commitEdit(draft)}

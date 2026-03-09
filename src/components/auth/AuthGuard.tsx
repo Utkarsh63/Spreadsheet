@@ -21,7 +21,7 @@ export function AuthGuard({ children }: AuthGuardProps) {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-white dark:bg-gray-950">
+      <div className="flex min-h-screen items-center justify-center bg-white">
         <Spinner size="lg" />
       </div>
     );

@@ -36,26 +36,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         isAnonymous: firebaseUser.isAnonymous,
       };
 
-      // Write user doc to Firestore on first sign-in (non-blocking)
-      try {
-        const userRef = doc(db, 'users', firebaseUser.uid);
-        const userSnap = await getDoc(userRef);
-        if (!userSnap.exists()) {
-          await setDoc(userRef, {
-            uid: appUser.uid,
-            displayName: appUser.displayName,
-            email: appUser.email,
-            photoURL: appUser.photoURL,
-            color,
-            isAnonymous: appUser.isAnonymous,
-          });
-        }
-      } catch (err) {
-        console.warn('Failed to write user profile to Firestore:', err);
-      }
-
+      // Set auth state immediately — don't block on Firestore
       setUser(appUser);
       setLoading(false);
+
+      // Write user doc to Firestore on first sign-in (truly non-blocking)
+      const userRef = doc(db, 'users', firebaseUser.uid);
+      getDoc(userRef)
+        .then((userSnap) => {
+          if (!userSnap.exists()) {
+            return setDoc(userRef, {
+              uid: appUser.uid,
+              displayName: appUser.displayName,
+              email: appUser.email,
+              photoURL: appUser.photoURL,
+              color,
+              isAnonymous: appUser.isAnonymous,
+            });
+          }
+          return undefined;
+        })
+        .catch((err) => console.warn('Failed to write user profile to Firestore:', err));
     });
 
     return unsubscribe;

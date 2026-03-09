@@ -85,11 +85,11 @@ export function LoginForm() {
   const isAnyLoading = loading || loadingGoogle;
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-linear-to-br from-indigo-50 via-white to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-900">
-      <div className="w-full max-w-sm rounded-2xl border border-gray-200 bg-white p-8 shadow-xl dark:border-gray-700 dark:bg-gray-800">
+    <div className="flex min-h-screen items-center justify-center bg-linear-to-br from-indigo-50 via-white to-white">
+      <div className="w-full max-w-sm rounded-2xl border border-gray-200 bg-white p-8 shadow-xl">
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Trademarkia Sheets</h1>
-          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Real-time collaborative spreadsheets</p>
+          <h1 className="text-2xl font-bold text-gray-900">Trademarkia Sheets</h1>
+          <p className="mt-1 text-sm text-gray-500">Real-time collaborative spreadsheets</p>
         </div>
 
         <Button onClick={() => void handleGoogle()} disabled={isAnyLoading} className="mb-6 w-full gap-2">
@@ -99,14 +99,14 @@ export function LoginForm() {
 
         <div className="relative mb-6">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-200 dark:border-gray-600" />
+            <div className="w-full border-t border-gray-200" />
           </div>
-          <div className="relative flex justify-center text-xs text-gray-400 dark:text-gray-500">
-            <span className="bg-white px-2 dark:bg-gray-800">or</span>
+          <div className="relative flex justify-center text-xs text-gray-400">
+            <span className="bg-white px-2">or</span>
           </div>
         </div>
 
-        <div className="mb-5 flex rounded-lg border border-gray-200 p-1 dark:border-gray-600">
+        <div className="mb-5 flex rounded-lg border border-gray-200 p-1">
           {(['signin', 'signup', 'guest'] as Tab[]).map((t) => (
             <button
               key={t}
@@ -115,7 +115,7 @@ export function LoginForm() {
               className={`flex-1 rounded-md py-1.5 text-xs font-medium transition-colors ${
                 tab === t
                   ? 'bg-indigo-600 text-white'
-                  : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+                  : 'text-gray-500 hover:text-gray-700'
               }`}
             >
               {t === 'signin' ? 'Sign In' : t === 'signup' ? 'Sign Up' : 'Guest'}
@@ -124,7 +124,7 @@ export function LoginForm() {
         </div>
 
         {error && (
-          <div className="mb-4 rounded-md bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-950/50 dark:text-red-400">{error}</div>
+          <div className="mb-4 rounded-md bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div>
         )}
 
         {tab === 'signin' && (

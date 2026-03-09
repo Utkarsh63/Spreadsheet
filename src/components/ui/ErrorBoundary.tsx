@@ -33,12 +33,12 @@ export class ErrorBoundary extends Component<Props, State> {
     if (this.state.hasError) {
       if (this.props.fallback) return this.props.fallback;
       return (
-        <div className="flex min-h-[200px] flex-col items-center justify-center gap-4 rounded-xl border border-red-200 bg-red-50 p-8 text-center dark:border-red-800 dark:bg-red-950/50">
-          <p className="font-semibold text-red-700 dark:text-red-300">Something went wrong</p>
-          <p className="max-w-sm text-sm text-red-500 dark:text-red-400">{this.state.message}</p>
+        <div className="flex min-h-50 flex-col items-center justify-center gap-4 rounded-xl border border-red-200 bg-red-50 p-8 text-center">
+          <p className="font-semibold text-red-700">Something went wrong</p>
+          <p className="max-w-sm text-sm text-red-500">{this.state.message}</p>
           <button
             onClick={this.handleReset}
-            className="rounded-md bg-red-600 px-4 py-2 text-sm text-white hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-600"
+            className="rounded-md bg-red-600 px-4 py-2 text-sm text-white hover:bg-red-700"
           >
             Try again
           </button>

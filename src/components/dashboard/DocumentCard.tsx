@@ -36,7 +36,7 @@ export const DocumentCard = memo(function DocumentCard({ document, currentUserId
     <>
     <div
       onClick={handleOpen}
-      className="group relative flex cursor-pointer flex-col gap-3 rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
+      className="group relative flex cursor-pointer flex-col gap-3 rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"
     >
       <div className="flex items-start justify-between">
         <FileSpreadsheet className="h-8 w-8 text-indigo-500" />
@@ -63,8 +63,8 @@ export const DocumentCard = memo(function DocumentCard({ document, currentUserId
         </div>
       </div>
       <div>
-        <h3 className="truncate font-semibold text-gray-900 dark:text-gray-100">{document.title}</h3>
-        <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
+        <h3 className="truncate font-semibold text-gray-900">{document.title}</h3>
+        <p className="mt-1 text-xs text-gray-400">
           Updated {format(document.updatedAt, 'MMM d, yyyy')}
         </p>
       </div>

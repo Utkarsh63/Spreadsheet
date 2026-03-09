@@ -5,10 +5,6 @@
   --foreground: #171717;
 }
 
-:root.dark {
-  --background: #0f0f0f;
-  --foreground: #f0f0f0;
-}
 
 @theme inline {
   --color-background: var(--background);

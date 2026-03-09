@@ -7,9 +7,9 @@ import { cn } from '@/lib/utils/cn';
 
 const config: Record<WriteState, { label: string; className: string } | null> = {
   idle: null,
-  saving: { label: 'Saving…', className: 'text-yellow-600 dark:text-yellow-400' },
-  saved: { label: 'Saved ✓', className: 'text-green-600 dark:text-green-400' },
-  error: { label: 'Failed to save', className: 'text-red-600 dark:text-red-400' },
+  saving: { label: 'Saving…', className: 'text-yellow-600' },
+  saved: { label: 'Saved ✓', className: 'text-green-600' },
+  error: { label: 'Failed to save', className: 'text-red-600' },
 };
 
 export function WriteStateIndicator() {
@@ -35,7 +35,7 @@ export function WriteStateIndicator() {
   return (
     <span className={cn('flex items-center gap-1 text-sm font-medium', cfg.className)}>
       {writeState === 'saving' && (
-        <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-yellow-500 dark:bg-yellow-400" />
+        <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-yellow-500" />
       )}
       {cfg.label}
     </span>

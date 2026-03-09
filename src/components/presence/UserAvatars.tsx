@@ -11,7 +11,7 @@ export function UserAvatars() {
       {onlineUsers.slice(0, 5).map((u) => (
         <Tooltip key={u.uid} content={u.displayName}>
           <div
-            className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-white text-xs font-bold text-white shadow-sm dark:border-gray-800"
+            className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-white text-xs font-bold text-white shadow-sm"
             style={{ backgroundColor: u.color }}
           >
             {u.displayName?.[0]?.toUpperCase() ?? '?'}
@@ -19,7 +19,7 @@ export function UserAvatars() {
         </Tooltip>
       ))}
       {onlineUsers.length > 5 && (
-        <div className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-gray-400 text-xs font-bold text-white dark:border-gray-800">
+        <div className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-gray-400 text-xs font-bold text-white">
           +{onlineUsers.length - 5}
         </div>
       )}

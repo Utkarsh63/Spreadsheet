@@ -5,7 +5,6 @@ import { useDocuments } from '@/lib/hooks/useDocument';
 import { DocumentList } from '@/components/dashboard/DocumentList';
 import { CreateDocumentButton } from '@/components/dashboard/CreateDocumentButton';
 import { WriteStateIndicator } from '@/components/ui/WriteStateIndicator';
-import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { signOut } from '@/lib/firebase/auth';
 import { Spinner } from '@/components/ui/Spinner';
 import { Button } from '@/components/ui/Button';
@@ -16,7 +15,7 @@ export default function DashboardPage() {
   const { documents, loading } = useDocuments(user?.uid ?? '');
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="border-b border-indigo-600/20 bg-linear-to-r from-indigo-600 to-indigo-500 px-6 py-3 shadow-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
@@ -46,15 +45,14 @@ export default function DashboardPage() {
                 </Button>
               </div>
             )}
-            <ThemeToggle className="text-white/80 hover:text-white hover:bg-white/15" tooltip={false} />
           </div>
         </div>
       </header>
 
       {/* Main */}
       <main className="mx-auto max-w-7xl px-6 py-8">
-        <div className="mb-6 flex items-center justify-between border-b border-gray-200 pb-4 dark:border-gray-800">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+        <div className="mb-6 flex items-center justify-between border-b border-gray-200 pb-4">
+          <h2 className="text-xl font-semibold text-gray-900">
             My Spreadsheets
           </h2>
           {user && <CreateDocumentButton userId={user.uid} />}

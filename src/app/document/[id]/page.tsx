@@ -15,7 +15,6 @@ import { Toolbar } from '@/components/spreadsheet/Toolbar';
 import { UserAvatars } from '@/components/presence/UserAvatars';
 import { ShareModal } from '@/components/dashboard/ShareModal';
 import { WriteStateIndicator } from '@/components/ui/WriteStateIndicator';
-import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { Spinner } from '@/components/ui/Spinner';
 import { ErrorBoundary } from '@/components/ui/ErrorBoundary';
 import { useAuth } from '@/lib/hooks/useAuth';
@@ -54,7 +53,7 @@ export default function DocumentPage({ params }: DocumentPageProps) {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-white dark:bg-gray-950">
+      <div className="flex min-h-screen items-center justify-center bg-white">
         <Spinner size="lg" />
       </div>
     );
@@ -62,11 +61,11 @@ export default function DocumentPage({ params }: DocumentPageProps) {
 
   if (!document) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-white dark:bg-gray-950">
-        <p className="text-gray-500 dark:text-gray-400">Document not found.</p>
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-white">
+        <p className="text-gray-500">Document not found.</p>
         <button
           onClick={() => router.push('/dashboard')}
-          className="text-indigo-600 underline dark:text-indigo-400"
+          className="text-indigo-600 underline"
         >
           Back to dashboard
         </button>
@@ -75,16 +74,16 @@ export default function DocumentPage({ params }: DocumentPageProps) {
   }
 
   return (
-    <div className="flex h-screen flex-col overflow-hidden bg-white dark:bg-gray-950">
+    <div className="flex h-screen flex-col overflow-hidden bg-white">
       {/* Header */}
-      <header className="flex items-center gap-3 border-b border-gray-200 bg-white px-4 py-2 dark:border-gray-700 dark:bg-gray-900">
+      <header className="flex items-center gap-3 border-b border-gray-200 bg-white px-4 py-2">
         <Link
           href="/dashboard"
-          className="text-gray-400 transition-colors hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-200"
+          className="text-gray-400 transition-colors hover:text-gray-700"
         >
           <ArrowLeft className="h-4 w-4" />
         </Link>
-        <h1 className="flex-1 truncate text-sm font-semibold text-gray-900 dark:text-gray-100">
+        <h1 className="flex-1 truncate text-sm font-semibold text-gray-900">
           {documentTitle}
         </h1>
         <div className="flex items-center gap-2">
@@ -93,13 +92,12 @@ export default function DocumentPage({ params }: DocumentPageProps) {
           <button
             type="button"
             onClick={() => setShowShare(true)}
-            className="flex items-center gap-1.5 rounded px-2 py-1 text-xs font-medium text-gray-500 transition-colors hover:bg-gray-100 hover:text-indigo-600 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-indigo-400"
+            className="flex items-center gap-1.5 rounded px-2 py-1 text-xs font-medium text-gray-500 transition-colors hover:bg-gray-100 hover:text-indigo-600"
             title="Share spreadsheet"
           >
             <Share2 className="h-3.5 w-3.5" />
             Share
           </button>
-          <ThemeToggle />
         </div>
       </header>
       {showShare && document && user && (

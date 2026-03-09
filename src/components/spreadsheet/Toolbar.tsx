@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { Bold, Italic, AlignLeft, AlignCenter, AlignRight, Eraser, ArrowUpDown, Download } from 'lucide-react';
+import { Bold, Italic, AlignLeft, AlignCenter, AlignRight, Eraser, ArrowUpDown, Download, Type, PaintBucket } from 'lucide-react';
 import { useSpreadsheetStore } from '@/lib/store/spreadsheet.store';
 import { useUIStore } from '@/lib/store/ui.store';
 import { cellService } from '@/services/cell.service';
@@ -21,7 +21,7 @@ interface ToolbarProps {
 const ROWS = 50;
 
 function Divider() {
-  return <div className="mx-0.5 h-5 w-px shrink-0 bg-gray-200 dark:bg-gray-700" />;
+  return <div className="mx-0.5 h-5 w-px shrink-0 bg-gray-200" />;
 }
 
 export function Toolbar({ docId }: ToolbarProps) {
@@ -112,7 +112,7 @@ export function Toolbar({ docId }: ToolbarProps) {
   const disabled = !selectedCell && !selectionRange;
 
   return (
-    <div className="flex items-center gap-0.5 border-b border-gray-200 bg-white px-2 py-1 dark:border-gray-700 dark:bg-gray-900">
+    <div className="flex items-center gap-0.5 border-b border-gray-200 bg-white px-2 py-1">
       <Tooltip content="Bold">
         <Button variant={fmt.bold ? 'default' : 'ghost'} size="sm" disabled={disabled} onClick={() => void applyFormat({ bold: !fmt.bold })} aria-label="Bold">
           <Bold className="h-3.5 w-3.5" />
@@ -138,6 +138,47 @@ export function Toolbar({ docId }: ToolbarProps) {
         <Button variant={alignActive('right') ? 'default' : 'ghost'} size="sm" disabled={disabled} onClick={() => void applyFormat({ textAlign: 'right' })} aria-label="Align right">
           <AlignRight className="h-3.5 w-3.5" />
         </Button>
+      </Tooltip>
+      <Divider />
+      {/* Text color picker */}
+      <Tooltip content="Text color">
+        <label
+          className={`relative flex h-7 w-7 cursor-pointer flex-col items-center justify-center rounded-md px-1 hover:bg-gray-100 ${disabled ? 'pointer-events-none opacity-50' : ''}`}
+          aria-label="Text color"
+        >
+          <Type className="h-3.5 w-3.5 text-gray-700" />
+          <span
+            className="mt-0.5 h-1 w-4 rounded-sm"
+            style={{ backgroundColor: fmt.textColor ?? '#000000' }}
+          />
+          <input
+            type="color"
+            className="absolute inset-0 h-0 w-0 opacity-0"
+            value={fmt.textColor ?? '#000000'}
+            disabled={disabled}
+            onChange={(e) => void applyFormat({ textColor: e.target.value })}
+          />
+        </label>
+      </Tooltip>
+      {/* Background color picker */}
+      <Tooltip content="Cell background color">
+        <label
+          className={`relative flex h-7 w-7 cursor-pointer flex-col items-center justify-center rounded-md px-1 hover:bg-gray-100 ${disabled ? 'pointer-events-none opacity-50' : ''}`}
+          aria-label="Cell background color"
+        >
+          <PaintBucket className="h-3.5 w-3.5 text-gray-700" />
+          <span
+            className="mt-0.5 h-1 w-4 rounded-sm border border-gray-200"
+            style={{ backgroundColor: fmt.backgroundColor ?? '#ffffff' }}
+          />
+          <input
+            type="color"
+            className="absolute inset-0 h-0 w-0 opacity-0"
+            value={fmt.backgroundColor ?? '#ffffff'}
+            disabled={disabled}
+            onChange={(e) => void applyFormat({ backgroundColor: e.target.value })}
+          />
+        </label>
       </Tooltip>
       <Divider />
       <Tooltip content="Clear cells (Delete)">

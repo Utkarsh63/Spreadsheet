@@ -152,6 +152,7 @@ export function Grid({ docId }: GridProps) {
             !e.altKey &&
             selectedCell
           ) {
+            e.preventDefault(); // prevent browser from typing the key into the input after focus
             startEditWithKey(selectedCell, e.key);
           }
       }
@@ -179,7 +180,7 @@ export function Grid({ docId }: GridProps) {
     <div
       ref={containerRef}
       tabIndex={0}
-      className="flex flex-1 flex-col overflow-auto bg-white outline-none focus:ring-0 dark:bg-gray-950"
+      className="flex flex-1 flex-col overflow-auto bg-white outline-none focus:ring-0"
       onClick={() => containerRef.current?.focus()}
     >
       <ColumnHeader cols={COLS} colWidths={colWidths} />
@@ -188,7 +189,7 @@ export function Grid({ docId }: GridProps) {
           <div key={rowIdx} className="flex" style={{ height: ROW_HEIGHT }}>
             {/* Row header */}
             <div
-              className="flex shrink-0 items-center justify-center border-b border-r border-gray-200 bg-gray-50 font-mono text-xs text-gray-400 select-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-500"
+              className="flex shrink-0 items-center justify-center border-b border-r border-gray-200 bg-gray-50 font-mono text-xs text-gray-400 select-none"
               style={{ width: ROW_HEADER_WIDTH }}
             >
               {rowIdx + 1}

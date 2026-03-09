@@ -60,7 +60,7 @@ export function CreateDocumentButton({ userId }: CreateDocumentButtonProps) {
       <Button type="button" variant="ghost" onClick={() => setOpen(false)}>
         Cancel
       </Button>
-      {error && <span className="text-sm text-red-600 dark:text-red-400">{error}</span>}
+      {error && <span className="text-sm text-red-600">{error}</span>}
     </form>
   );
 }
